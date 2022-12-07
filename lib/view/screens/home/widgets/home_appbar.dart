@@ -25,23 +25,8 @@ class HomeAppBar extends StatelessWidget with PreferredSizeWidget {
           if (provider.currentUser == User.teacher) {
             return PopupMenuButton<String>(
               icon: const Icon(Icons.more_vert),
-              itemBuilder: (BuildContext context) {
-                return [const PopupMenuItem<String>(value: 'Scan', child: Text('Scan'))];
-              },
-              onSelected: (selected) async {
-                String result = await FlutterBarcodeScanner.scanBarcode(
-                  '#ff6666',
-                  'Cancel',
-                  false,
-                  ScanMode.BARCODE,
-                );
-                if (result != '-1') {
-                  final webViewController = provider.webViewController;
-                  if (webViewController != null) {
-                    webViewController.evaluateJavascript('document.getElementById("ret_barcode").value = "$result";');
-                  }
-                }
-              },
+              itemBuilder: (BuildContext context) => [const PopupMenuItem<String>(value: 'Scan', child: Text('Scan'))],
+              onSelected: (selected) => scanBarcode(selected, provider),
             );
           } else {
             return const SizedBox();
@@ -49,5 +34,18 @@ class HomeAppBar extends StatelessWidget with PreferredSizeWidget {
         }),
       ],
     );
+  }
+
+  void scanBarcode(String selected, WebProvider provider) async {
+    String result = await FlutterBarcodeScanner.scanBarcode(
+      '#ff6666',
+      'Cancel',
+      false,
+      ScanMode.BARCODE,
+    );
+    final webViewController = provider.webViewController;
+    if (result != '-1' && webViewController != null) {
+      webViewController.evaluateJavascript('document.getElementById("ret_barcode").value = "$result";');
+    }
   }
 }
