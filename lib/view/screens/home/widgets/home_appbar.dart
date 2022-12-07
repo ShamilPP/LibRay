@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:provider/provider.dart';
 
 import '../../../../utlis/enum/user.dart';
@@ -30,13 +29,18 @@ class HomeAppBar extends StatelessWidget with PreferredSizeWidget {
                 return [const PopupMenuItem<String>(value: 'Scan', child: Text('Scan'))];
               },
               onSelected: (selected) async {
-                String barcodeScanRes = await FlutterBarcodeScanner.scanBarcode(
+                String result = await FlutterBarcodeScanner.scanBarcode(
                   '#ff6666',
                   'Cancel',
                   false,
                   ScanMode.BARCODE,
                 );
-                Fluttertoast.showToast(msg: barcodeScanRes);
+                if (result != '-1') {
+                  final webViewController = provider.webViewController;
+                  if (webViewController != null) {
+                    webViewController.evaluateJavascript('document.getElementById("ret_barcode").value = "$result";');
+                  }
+                }
               },
             );
           } else {

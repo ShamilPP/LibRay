@@ -23,9 +23,12 @@ class HomeScreen extends StatelessWidget {
           if (provider.webStatus == Status.loading) {
             return const Center(child: CircularProgressIndicator());
           } else if (provider.webStatus == Status.success) {
-            return WebView(
+          return WebView(
               initialUrl: provider.currentUser == User.student ? studentUrl : teacherUrl,
               javascriptMode: JavascriptMode.unrestricted,
+                onWebViewCreated: (WebViewController webViewController) {
+                  provider.setController(webViewController);
+                },
             );
           } else {
             return const FailedView();
