@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../../../../view_model/web_view_model.dart';
+import '../../../../view_model/web_provider.dart';
 
 class FailedView extends StatelessWidget {
   const FailedView({Key? key}) : super(key: key);

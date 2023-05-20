@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gbhss_library/view/screens/splash/splash_screen.dart';
-import 'package:gbhss_library/view_model/web_view_model.dart';
+import 'package:gbhss_library/view_model/book_provider.dart';
+import 'package:gbhss_library/view_model/web_provider.dart';
 import 'package:provider/provider.dart';
 
 void main() {
@@ -15,6 +16,7 @@ class App extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (_) => WebProvider()),
+        ChangeNotifierProvider(create: (_) => BookProvider()),
       ],
       child: MaterialApp(
         title: 'GBHSS Library',

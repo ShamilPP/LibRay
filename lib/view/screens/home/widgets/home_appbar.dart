@@ -3,7 +3,8 @@ import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 import 'package:provider/provider.dart';
 
 import '../../../../utlis/enum/user.dart';
-import '../../../../view_model/web_view_model.dart';
+import '../../../../view_model/web_provider.dart';
+import '../../search/book_search_screen.dart';
 
 class HomeAppBar extends StatelessWidget with PreferredSizeWidget {
   const HomeAppBar({Key? key}) : super(key: key);
@@ -19,8 +20,10 @@ class HomeAppBar extends StatelessWidget with PreferredSizeWidget {
         IconButton(
           icon: const Icon(Icons.search),
           tooltip: 'Search',
-          onPressed: () {},
-        ), //IconButton
+          onPressed: () {
+            Navigator.push(context, MaterialPageRoute(builder: (_) => BookSearchScreen()));
+          },
+        ),
         Consumer<WebProvider>(builder: (ctx, provider, child) {
           if (provider.currentUser == User.teacher) {
             return PopupMenuButton<String>(
@@ -45,7 +48,7 @@ class HomeAppBar extends StatelessWidget with PreferredSizeWidget {
     );
     final webViewController = provider.webViewController;
     if (result != '-1' && webViewController != null) {
-      webViewController.evaluateJavascript('document.getElementById("ret_barcode").value = "$result";');
+      webViewController.runJavascript('document.getElementById("ret_barcode").value = "$result";');
     }
   }
 }

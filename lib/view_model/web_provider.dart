@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:gbhss_library/service/web_service.dart';
-import 'package:gbhss_library/utlis/enum/status.dart';
 import 'package:gbhss_library/utlis/enum/user.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
+import '../model/result.dart';
 import '../utlis/constants.dart';
 
 class WebProvider extends ChangeNotifier {
-  Status _webStatus = Status.failed;
+  Status _webStatus = Status.error;
   User _currentUser = User.student;
   WebViewController? _webViewController;
 
@@ -24,7 +24,7 @@ class WebProvider extends ChangeNotifier {
     if (isStable) {
       _webStatus = Status.success;
     } else {
-      _webStatus = Status.failed;
+      _webStatus = Status.error;
     }
     notifyListeners();
   }
@@ -37,6 +37,6 @@ class WebProvider extends ChangeNotifier {
   }
 
   void setController(WebViewController controller) {
-    _webViewController=controller;
+    _webViewController = controller;
   }
 }
