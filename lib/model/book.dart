@@ -1,5 +1,4 @@
 class Book {
-  final String imageLink;
   final String title;
   final String? subtitle;
   final String? description;
@@ -20,6 +19,5 @@ class Book {
     required this.pages,
     required this.rating,
     required this.language,
-    required this.imageLink,
   });
 }

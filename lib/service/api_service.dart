@@ -8,7 +8,6 @@ import '../model/result.dart';
 class ApiService {
   static Future<Result<Book>> getBookWithISBN(int isbn) async {
     final url = 'https://www.googleapis.com/books/v1/volumes?q=isbn:$isbn'; // API endpoint
-
     try {
       final response = await http.get(Uri.parse(url));
 
@@ -18,7 +17,6 @@ class ApiService {
         if (jsonData['totalItems'] > 0) {
           final bookData = jsonData['items'][0]['volumeInfo'];
           Book book = Book(
-            imageLink: bookData['imageLinks']['thumbnail'],
             title: bookData['title'],
             subtitle: bookData['subtitle'],
             description: bookData['description'],
@@ -31,14 +29,13 @@ class ApiService {
           );
           return Result.success(book);
         } else {
-          Result.error('No Book');
+          return Result.error('No Book');
         }
       } else {
         return Result.error('Response code : ${response.statusCode}');
       }
     } catch (e) {
-      Result.error(e.toString());
+      return Result.error(e.toString());
     }
-    return Result.error('Error');
   }
 }
