@@ -1,1 +1,1 @@
-enum User { student, teacher }
+enum User { student, staff }

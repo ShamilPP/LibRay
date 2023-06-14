@@ -12,11 +12,7 @@ class FailedView extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Icon(
-            Icons.info_outline,
-            color: Colors.grey[700],
-            size: 40,
-          ),
+          Icon(Icons.info_outline, color: Colors.grey[700], size: 40),
           const SizedBox(height: 10),
           const Text('Oops..! Failed to connect server', style: TextStyle(fontSize: 15)),
           const SizedBox(height: 10),
@@ -25,7 +21,7 @@ class FailedView extends StatelessWidget {
           ElevatedButton(
             child: const Text('Try again'),
             onPressed: () {
-              Provider.of<WebProvider>(context, listen: false).checkConnectivity();
+              Provider.of<WebProvider>(context, listen: false).updateConnectivity();
             },
           ),
         ],

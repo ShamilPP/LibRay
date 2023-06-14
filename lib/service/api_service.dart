@@ -7,7 +7,7 @@ import '../model/result.dart';
 
 class ApiService {
   static Future<Result<Book>> getBookWithISBN(int isbn) async {
-    final url = 'https://www.googleapis.com/books/v1/volumes?q=isbn:$isbn'; // API endpoint
+    final url = 'https://www.googleapis.com/books/v1/volumes?q=isbn:$isbn';
     try {
       final response = await http.get(Uri.parse(url));
 

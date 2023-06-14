@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
+import 'package:gbhss_library/utlis/enum/user.dart';
+import 'package:gbhss_library/view_model/application_provider.dart';
 import 'package:provider/provider.dart';
 
-import '../../../../utlis/enum/user.dart';
 import '../../../../view_model/web_provider.dart';
-import '../../search/book_search_screen.dart';
+import '../../settings/settings_screen.dart';
 
-class HomeAppBar extends StatelessWidget with PreferredSizeWidget {
+class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
   const HomeAppBar({Key? key}) : super(key: key);
 
   @override
@@ -14,39 +15,51 @@ class HomeAppBar extends StatelessWidget with PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AppBar(
-      title: const Text('Library'),
-      actions: [
-        IconButton(
-          icon: const Icon(Icons.search),
-          tooltip: 'Search',
-          onPressed: () {
-            Navigator.push(context, MaterialPageRoute(builder: (_) => BookSearchScreen()));
-          },
-        ),
-        Consumer<WebProvider>(builder: (ctx, provider, child) {
-          if (provider.currentUser == User.teacher) {
-            return PopupMenuButton<String>(
-              icon: const Icon(Icons.more_vert),
-              itemBuilder: (BuildContext context) => [const PopupMenuItem<String>(value: 'Scan', child: Text('Scan'))],
-              onSelected: (selected) => scanBarcode(selected, provider),
-            );
-          } else {
-            return const SizedBox();
-          }
-        }),
-      ],
+    return Consumer<ApplicationProvider>(
+      builder: (context, provider, child) {
+        return AppBar(
+          title: Text(provider.title),
+          actions: [
+            PopupMenuButton<String>(
+              itemBuilder: (BuildContext context) {
+                return [
+                  if (provider.user == User.staff)
+                    PopupMenuItem<String>(
+                      value: 'Scan',
+                      child: Text('Scan'),
+                    ),
+                  PopupMenuItem<String>(
+                    value: 'Settings',
+                    child: Text('Settings'),
+                  ),
+                ];
+              },
+              onSelected: (selected) async {
+                switch (selected) {
+                  case 'Scan':
+                    scanBarcodeAndApply(context);
+                    break;
+                  case 'Settings':
+                    Navigator.push(context, MaterialPageRoute(builder: (_) => SettingsScreen()));
+                    break;
+                }
+              },
+            ),
+          ],
+        );
+      },
     );
   }
 
-  void scanBarcode(String selected, WebProvider provider) async {
+  void scanBarcodeAndApply(BuildContext context) async {
     String result = await FlutterBarcodeScanner.scanBarcode(
       '#ff6666',
       'Cancel',
       false,
       ScanMode.BARCODE,
     );
-    final webViewController = provider.webViewController;
+    final webViewController = Provider.of<WebProvider>(context, listen: false).webViewController;
+    // Apply text
     if (result != '-1' && webViewController != null) {
       webViewController.runJavascript('document.getElementById("ret_barcode").value = "$result";');
     }

@@ -1,26 +1,29 @@
 import 'package:flutter/material.dart';
 import 'package:gbhss_library/service/web_service.dart';
-import 'package:gbhss_library/utlis/enum/user.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 import '../model/result.dart';
-import '../utlis/constants.dart';
 
 class WebProvider extends ChangeNotifier {
-  Status _webStatus = Status.error;
-  User _currentUser = User.student;
+  late String _ip;
+  late String _port;
+  Status _webStatus = Status.loading;
   WebViewController? _webViewController;
 
   Status get webStatus => _webStatus;
 
-  User get currentUser => _currentUser;
+  String get ip => _ip;
+
+  String get port => _port;
+
+  String get url => 'http://$ip:$port';
 
   WebViewController? get webViewController => _webViewController;
 
-  void checkConnectivity() async {
+  void updateConnectivity() async {
     _webStatus = Status.loading;
     notifyListeners();
-    bool isStable = await WebService.checkConnection(_currentUser == User.student ? studentUrl : teacherUrl);
+    bool isStable = await WebService.checkConnection(url);
     if (isStable) {
       _webStatus = Status.success;
     } else {
@@ -29,11 +32,12 @@ class WebProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  void setUser(User user) {
-    _currentUser = user;
-    checkConnectivity();
+  void setIp(String newIp) {
+    _ip = newIp;
+  }
 
-    notifyListeners();
+  void setPort(String newPort) {
+    _port = newPort;
   }
 
   void setController(WebViewController controller) {

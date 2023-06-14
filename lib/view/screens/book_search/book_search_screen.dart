@@ -14,22 +14,14 @@ class BookSearchScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Experiment'),
-      ),
+      appBar: AppBar(title: Text('Book search')),
       body: Container(
         padding: EdgeInsets.symmetric(horizontal: 24),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             SizedBox(height: 40),
-            Text(
-              'Find Your Book',
-              style: TextStyle(
-                fontSize: 24,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
+            Text('Find Your Book', style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
             SizedBox(height: 24),
             TextField(
               controller: isbnController,
@@ -127,41 +119,17 @@ class BookDialog extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisSize: MainAxisSize.min,
         children: [
-          Text(
-            'Title:',
-            style: TextStyle(
-              fontSize: 20,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
+          Text('Title:', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
           SizedBox(height: 8),
-          Text(
-            '${book.title}',
-            style: TextStyle(
-              fontSize: 18,
-              fontWeight: FontWeight.normal,
-            ),
-          ),
+          Text('${book.title}', style: TextStyle(fontSize: 18, fontWeight: FontWeight.normal)),
           SizedBox(height: 16),
           if (book.subtitle != null)
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  'Subtitle:',
-                  style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
+                Text('Subtitle:', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
                 SizedBox(height: 8),
-                Text(
-                  '${book.subtitle}',
-                  style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.normal,
-                  ),
-                ),
+                Text('${book.subtitle}', style: TextStyle(fontSize: 18, fontWeight: FontWeight.normal)),
                 SizedBox(height: 16),
               ],
             ),
@@ -169,21 +137,9 @@ class BookDialog extends StatelessWidget {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  'Description:',
-                  style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
+                Text('Description:', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
                 SizedBox(height: 8),
-                Text(
-                  '${book.description}',
-                  style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.normal,
-                  ),
-                ),
+                Text('${book.description}', style: TextStyle(fontSize: 18, fontWeight: FontWeight.normal)),
                 SizedBox(height: 16),
               ],
             ),
@@ -191,21 +147,9 @@ class BookDialog extends StatelessWidget {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  'Author:',
-                  style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
+                Text('Author:', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
                 SizedBox(height: 8),
-                Text(
-                  '${book.author}',
-                  style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.normal,
-                  ),
-                ),
+                Text('${book.author}', style: TextStyle(fontSize: 18, fontWeight: FontWeight.normal)),
                 SizedBox(height: 16),
               ],
             ),
@@ -213,21 +157,9 @@ class BookDialog extends StatelessWidget {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  'Publisher:',
-                  style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
+                Text('Publisher:', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
                 SizedBox(height: 8),
-                Text(
-                  '${book.publisher}',
-                  style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.normal,
-                  ),
-                ),
+                Text('${book.publisher}', style: TextStyle(fontSize: 18, fontWeight: FontWeight.normal)),
                 SizedBox(height: 16),
               ],
             ),
@@ -235,21 +167,9 @@ class BookDialog extends StatelessWidget {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  'Published Date:',
-                  style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
+                Text('Published Date:', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
                 SizedBox(height: 8),
-                Text(
-                  '${book.publishedDate}',
-                  style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.normal,
-                  ),
-                ),
+                Text('${book.publishedDate}', style: TextStyle(fontSize: 18, fontWeight: FontWeight.normal)),
                 SizedBox(height: 16),
               ],
             ),
@@ -257,21 +177,9 @@ class BookDialog extends StatelessWidget {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  'Pages:',
-                  style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
+                Text('Pages:', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
                 SizedBox(height: 8),
-                Text(
-                  '${book.pages}',
-                  style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.normal,
-                  ),
-                ),
+                Text('${book.pages}', style: TextStyle(fontSize: 18, fontWeight: FontWeight.normal)),
                 SizedBox(height: 16),
               ],
             ),
@@ -279,21 +187,9 @@ class BookDialog extends StatelessWidget {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  'Rating:',
-                  style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
+                Text('Rating:', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
                 SizedBox(height: 8),
-                Text(
-                  '${book.rating}',
-                  style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.normal,
-                  ),
-                ),
+                Text('${book.rating}', style: TextStyle(fontSize: 18, fontWeight: FontWeight.normal)),
                 SizedBox(height: 16),
               ],
             ),
@@ -301,21 +197,9 @@ class BookDialog extends StatelessWidget {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  'Language:',
-                  style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
+                Text('Language:', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
                 SizedBox(height: 8),
-                Text(
-                  '${book.language}',
-                  style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.normal,
-                  ),
-                ),
+                Text('${book.language}', style: TextStyle(fontSize: 18, fontWeight: FontWeight.normal)),
               ],
             ),
         ],
