@@ -18,7 +18,7 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
     return Consumer<ApplicationProvider>(
       builder: (context, provider, child) {
         return AppBar(
-          title: Text(provider.title),
+          title: Text('LibRay (${provider.title})'),
           actions: [
             PopupMenuButton<String>(
               itemBuilder: (BuildContext context) {

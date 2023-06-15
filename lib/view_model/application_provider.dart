@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:libray/utlis/enum/user.dart';
 
 class ApplicationProvider extends ChangeNotifier {
-  String _title = 'LibRay';
+  String _title = 'GBHSS MPM';
   User _user = User.student;
 
   String get title => _title;
