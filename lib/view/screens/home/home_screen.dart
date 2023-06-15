@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:gbhss_library/view/screens/home/widgets/failed_view.dart';
-import 'package:gbhss_library/view/screens/home/widgets/home_appbar.dart';
-import 'package:gbhss_library/view_model/web_provider.dart';
+import 'package:libray/view/screens/home/widgets/failed_view.dart';
+import 'package:libray/view/screens/home/widgets/home_appbar.dart';
+import 'package:libray/view_model/web_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 

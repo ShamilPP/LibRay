@@ -1,6 +1,6 @@
-# gbhss_library
+# libray
 
-A new Flutter project.
+Your pocket library. Access, organize, and explore books effortlessly. Discover new reads, manage your personal collection, and dive into the world of literature anytime, anywhere.
 
 ## Getting Started
 

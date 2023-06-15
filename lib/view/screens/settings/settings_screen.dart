@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:gbhss_library/view_model/application_provider.dart';
-import 'package:gbhss_library/view_model/web_provider.dart';
+import 'package:libray/view_model/application_provider.dart';
+import 'package:libray/view_model/web_provider.dart';
 import 'package:provider/provider.dart';
 
 class SettingsScreen extends StatelessWidget {

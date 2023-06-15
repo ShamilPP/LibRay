@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:gbhss_library/service/web_service.dart';
+import 'package:libray/service/web_service.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 import '../model/result.dart';

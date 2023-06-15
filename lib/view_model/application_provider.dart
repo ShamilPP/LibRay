@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:gbhss_library/utlis/enum/user.dart';
+import 'package:libray/utlis/enum/user.dart';
 
 class ApplicationProvider extends ChangeNotifier {
   String _title = 'LibRay';

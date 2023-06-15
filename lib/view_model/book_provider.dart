@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:gbhss_library/service/api_service.dart';
+import 'package:libray/service/api_service.dart';
 
 import '../model/book.dart';
 import '../model/result.dart';

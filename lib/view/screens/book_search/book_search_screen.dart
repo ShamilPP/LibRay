@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:gbhss_library/model/result.dart';
-import 'package:gbhss_library/view_model/book_provider.dart';
+import 'package:libray/model/result.dart';
+import 'package:libray/view_model/book_provider.dart';
 import 'package:provider/provider.dart';
 
 import '../../../model/book.dart';

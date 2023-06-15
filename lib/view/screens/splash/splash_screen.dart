@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:gbhss_library/utlis/constants.dart';
-import 'package:gbhss_library/view_model/web_provider.dart';
+import 'package:libray/utlis/constants.dart';
+import 'package:libray/view_model/web_provider.dart';
 import 'package:provider/provider.dart';
 
 import '../home/home_screen.dart';
@@ -11,9 +11,9 @@ class SplashScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     init(context);
-    return const Scaffold(
+    return Scaffold(
       body: Center(
-        child: FlutterLogo(size: 125),
+        child: Image.asset('assets/icon.png', width: 150, height: 150),
       ),
     );
   }

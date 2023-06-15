@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:gbhss_library/view/screens/splash/splash_screen.dart';
-import 'package:gbhss_library/view_model/application_provider.dart';
-import 'package:gbhss_library/view_model/book_provider.dart';
-import 'package:gbhss_library/view_model/web_provider.dart';
+import 'package:libray/view/screens/splash/splash_screen.dart';
+import 'package:libray/view_model/application_provider.dart';
+import 'package:libray/view_model/book_provider.dart';
+import 'package:libray/view_model/web_provider.dart';
 import 'package:provider/provider.dart';
 
 void main() {
@@ -21,7 +21,7 @@ class App extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => BookProvider()),
       ],
       child: MaterialApp(
-        title: 'GBHSS Library',
+        title: 'LibRay',
         theme: ThemeData(primarySwatch: Colors.green),
         home: const SplashScreen(),
       ),

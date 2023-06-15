@@ -1,4 +1,4 @@
-package com.shamil.gbhss_library;
+package com.shamil.libray;
 
 import io.flutter.embedding.android.FlutterActivity;
 

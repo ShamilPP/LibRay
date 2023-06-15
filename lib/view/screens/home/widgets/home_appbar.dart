@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
-import 'package:gbhss_library/utlis/enum/user.dart';
-import 'package:gbhss_library/view_model/application_provider.dart';
+import 'package:libray/utlis/enum/user.dart';
+import 'package:libray/view_model/application_provider.dart';
 import 'package:provider/provider.dart';
 
 import '../../../../view_model/web_provider.dart';

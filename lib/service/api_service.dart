@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:gbhss_library/model/book.dart';
+import 'package:libray/model/book.dart';
 import 'package:http/http.dart' as http;
 
 import '../model/result.dart';
