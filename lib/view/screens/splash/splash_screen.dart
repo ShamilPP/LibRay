@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:libray/utlis/constants.dart';
+import 'package:libray/utlis/enum/user.dart';
 import 'package:libray/view_model/application_provider.dart';
 import 'package:libray/view_model/web_provider.dart';
 import 'package:provider/provider.dart';
@@ -25,6 +26,9 @@ class SplashScreen extends StatelessWidget {
     var appProvider = Provider.of<ApplicationProvider>(context, listen: false);
     // Get ip, port, title and userType receive from local
     SharedPreferences preference = await SharedPreferences.getInstance();
+    if (!preference.containsKey('user')) {
+      await preference.setInt('user', 1);
+    }
     if (!preference.containsKey('ip')) {
       await preference.setString('ip', Default.DEFAULT_IP);
     }
@@ -37,6 +41,11 @@ class SplashScreen extends StatelessWidget {
     webProvider.setIp(preference.getString('ip')!);
     webProvider.setPort(preference.getString('port')!);
     appProvider.setTitle(preference.getString('title')!);
+    if (preference.getInt('user') == 1) {
+      appProvider.setUser(User.student);
+    } else {
+      appProvider.setUser(User.staff);
+    }
 
     Future.delayed(const Duration(milliseconds: 300)).then((value) {
       Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) => const HomeScreen()));

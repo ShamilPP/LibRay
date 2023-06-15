@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:libray/utlis/enum/user.dart';
 import 'package:libray/view_model/application_provider.dart';
 import 'package:libray/view_model/web_provider.dart';
 import 'package:provider/provider.dart';
@@ -15,6 +16,14 @@ class SettingsScreen extends StatelessWidget {
         appBar: AppBar(title: Text('Settings')),
         body: Column(
           children: [
+            ListTile(
+              title: Text('User'),
+              subtitle: Text('${capitalize(appProvider.user.name)}'),
+              onTap: () {
+                showUserPickerDialog(context);
+              },
+            ),
+            Divider(height: 0),
             ListTile(
               title: Text('Title'),
               subtitle: Text('Change app title (${appProvider.title})'),
@@ -104,6 +113,58 @@ class SettingsScreen extends StatelessWidget {
               child: Text('Save')),
         ],
       ),
+    );
+  }
+
+  capitalize(String input) {
+    return input[0].toUpperCase() + input.substring(1);
+  }
+
+  void showUserPickerDialog(BuildContext context) {
+    var appProvider = Provider.of<ApplicationProvider>(context, listen: false);
+    User selectedUser = appProvider.user;
+
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return Dialog(
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
+          child: Padding(
+            padding: EdgeInsets.all(16.0),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                RadioListTile<User>(
+                  title: Text('Student'),
+                  value: User.student,
+                  groupValue: selectedUser,
+                  onChanged: (value) async {
+                    if (value != null) {
+                      appProvider.setUser(value);
+                      SharedPreferences preference = await SharedPreferences.getInstance();
+                      await preference.setInt('user', 1);
+                      Navigator.pop(context);
+                    }
+                  },
+                ),
+                RadioListTile<User>(
+                  title: Text('Staff'),
+                  value: User.staff,
+                  groupValue: selectedUser,
+                  onChanged: (value) async {
+                    if (value != null) {
+                      appProvider.setUser(value);
+                      SharedPreferences preference = await SharedPreferences.getInstance();
+                      await preference.setInt('user', 2);
+                      Navigator.pop(context);
+                    }
+                  },
+                ),
+              ],
+            ),
+          ),
+        );
+      },
     );
   }
 }
